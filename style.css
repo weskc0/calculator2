@@ -1,64 +1,37 @@
-/* =========================================
-   IMPORTS & VARIABLES
-   ========================================= */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    /* Brand Colors (Based on your Logo) */
-    --color-primary: #0f2b26;   /* Deep Forest Green (Local) */
-    --color-secondary: #b89868; /* Light Brown/Tan (Matter) */
-    --color-accent: #10b981;    /* Leaf Green */
+    --color-primary: #0f2b26;
+    --color-secondary: #b89868;
+    --color-accent: #10b981;
     --color-accent-dark: #059669;
     --color-accent-light: #d1fae5;
-    
-    /* UI Colors */
     --color-white: #ffffff;
-    --color-bg: #f8f8f5;        /* Warm paper white */
+    --color-bg: #f8f8f5;
     --color-border: #e5e5e5;
     --color-text: #334155;
     --color-text-light: #64748b;
-    
-    /* Gradients */
     --gradient-primary: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
     --gradient-hero: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
     --gradient-shine: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
-    
-    /* Typography */
     --font-sans: 'Inter', sans-serif;
-    
-    /* Spacing */
-    --spacing-xs: 0.5rem;
-    --spacing-sm: 1rem;
-    --spacing-md: 1.5rem;
-    --spacing-lg: 2.5rem;
-    --spacing-xl: 4rem;
-    --spacing-2xl: 6rem;
-    
-    /* Effects */
     --shadow-sm: 0 1px 2px rgba(15, 43, 38, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(15, 43, 38, 0.1);
     --shadow-lg: 0 20px 25px -5px rgba(15, 43, 38, 0.1), 0 10px 10px -5px rgba(15, 43, 38, 0.04);
     --shadow-glow: 0 0 20px rgba(16, 185, 129, 0.2);
-    
     --radius-md: 16px;
     --radius-lg: 24px;
     --radius-full: 9999px;
-    
     --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* =========================================
-   RESET & BASE
-   ========================================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--font-sans);
@@ -66,7 +39,6 @@ body {
     line-height: 1.6;
     color: var(--color-text);
     background-color: var(--color-bg);
-    /* Subtle Noise Texture for Premium Feel */
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.03'/%3E%3C/svg%3E");
     overflow-x: hidden;
 }
@@ -87,14 +59,11 @@ img { max-width: 100%; display: block; }
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 var(--spacing-lg);
+    padding: 0 2rem;
     position: relative;
     z-index: 1;
 }
 
-/* =========================================
-   SCROLL ANIMATION CLASSES (Used by JS)
-   ========================================= */
 .reveal {
     opacity: 0;
     transform: translateY(40px);
@@ -106,9 +75,6 @@ img { max-width: 100%; display: block; }
     transform: translateY(0);
 }
 
-/* =========================================
-   HEADER
-   ========================================= */
 .header {
     position: sticky;
     top: 0;
@@ -197,17 +163,13 @@ img { max-width: 100%; display: block; }
     transform: rotate(90deg);
 }
 
-/* =========================================
-   HERO SECTION
-   ========================================= */
 .hero {
-    padding: var(--spacing-2xl) 0;
+    padding: 6rem 0;
     background: var(--gradient-hero);
     position: relative;
     overflow: hidden;
 }
 
-/* Decorative organic blob */
 .hero::before {
     content: '';
     position: absolute;
@@ -224,7 +186,7 @@ img { max-width: 100%; display: block; }
 .hero .container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
+    gap: 4rem;
     align-items: center;
 }
 
@@ -268,7 +230,6 @@ img { max-width: 100%; display: block; }
     background: var(--color-accent);
 }
 
-/* Shimmer effect on button */
 .cta-button::before {
     content: '';
     position: absolute;
@@ -285,7 +246,6 @@ img { max-width: 100%; display: block; }
     transition: left 0.5s ease;
 }
 
-/* Hero Visual - Abstract Data Representation */
 .hero-visual {
     position: relative;
     height: 500px;
@@ -321,12 +281,9 @@ img { max-width: 100%; display: block; }
     50% { transform: translateY(-20px); }
 }
 
-/* =========================================
-   SERVICES
-   ========================================= */
-.services { padding: var(--spacing-2xl) 0; background: var(--color-white); }
+.services { padding: 6rem 0; background: var(--color-white); }
 
-.section-header { text-align: center; max-width: 700px; margin: 0 auto var(--spacing-xl); }
+.section-header { text-align: center; max-width: 700px; margin: 0 auto 4rem; }
 .section-subtitle { color: var(--color-text-light); font-size: 1.1rem; }
 
 .services-grid {
@@ -385,10 +342,7 @@ img { max-width: 100%; display: block; }
 .service-card h4 { margin-bottom: 0.75rem; font-size: 1.25rem; }
 .service-card p { font-size: 0.95rem; margin: 0; }
 
-/* =========================================
-   PROCESS
-   ========================================= */
-.process { padding: var(--spacing-2xl) 0; background: var(--color-bg); }
+.process { padding: 6rem 0; background: var(--color-bg); }
 
 .process-steps {
     display: grid;
@@ -418,10 +372,7 @@ img { max-width: 100%; display: block; }
     margin-bottom: 1rem;
 }
 
-/* =========================================
-   SOCIAL PROOF
-   ========================================= */
-.proof { padding: var(--spacing-2xl) 0; background: var(--color-white); }
+.proof { padding: 6rem 0; background: var(--color-white); }
 
 .proof-grid {
     display: grid;
@@ -438,10 +389,7 @@ img { max-width: 100%; display: block; }
     margin-bottom: 0.5rem;
 }
 
-/* =========================================
-   CONTACT SECTION (Highlighting Ryker)
-   ========================================= */
-.contact { padding: var(--spacing-2xl) 0; background: var(--color-primary); color: var(--color-white); }
+.contact { padding: 6rem 0; background: var(--color-primary); color: var(--color-white); }
 
 .contact h3, .contact p { color: var(--color-white); }
 .contact p { opacity: 0.8; }
@@ -457,7 +405,6 @@ img { max-width: 100%; display: block; }
     backdrop-filter: blur(10px);
 }
 
-/* Highlight Box for Ryker */
 .highlight-box {
     background: linear-gradient(90deg, rgba(16, 185, 129, 0.2), rgba(16, 185, 129, 0.05));
     border-left: 4px solid var(--color-accent);
@@ -506,11 +453,8 @@ img { max-width: 100%; display: block; }
     color: rgba(255,255,255,0.9);
 }
 
-.benefit-icon {
-    color: var(--color-accent);
-}
+.benefit-icon { color: var(--color-accent); }
 
-/* Form Styling */
 .contact-form-wrapper {
     background: var(--color-white);
     padding: 2.5rem;
@@ -577,9 +521,6 @@ img { max-width: 100%; display: block; }
     border: 1px solid #a7f3d0;
 }
 
-/* =========================================
-   ADMIN MODAL
-   ========================================= */
 .modal-overlay {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -642,9 +583,6 @@ img { max-width: 100%; display: block; }
 .request-item h5 { color: var(--color-primary); margin-bottom: 5px; }
 .request-date { font-size: 0.75rem; color: #94a3b8; margin-top: 8px; display: block; }
 
-/* =========================================
-   FOOTER
-   ========================================= */
 .footer {
     background: var(--color-primary);
     color: rgba(255, 255, 255, 0.6);
@@ -670,15 +608,12 @@ img { max-width: 100%; display: block; }
     font-size: 0.9rem;
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
 @media (max-width: 900px) {
     .hero .container { grid-template-columns: 1fr; text-align: center; }
     .hero-visual { display: none; }
     .hero-content p { margin: 0 auto 2rem; }
     .contact-wrapper { grid-template-columns: 1fr; padding: 2rem; }
-    .logo-text { display: none; } /* Hide text on small screens, keep logo image */
+    .logo-text { display: none; }
 }
 
 @media (max-width: 480px) {
@@ -686,4 +621,3 @@ img { max-width: 100%; display: block; }
     .hero { padding: 4rem 0; }
     .container { padding: 0 1.5rem; }
 }
-```
