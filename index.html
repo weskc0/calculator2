@@ -3,133 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalMatter | Local Merch & Supplier Sourcing — Spartanburg, SC</title>
-    <meta name="description" content="Merch sourcing, supplier finding, and brand kits for Spartanburg small businesses. No fluff. Just results.">
+    <title>Local Matter | Merch & Supplier Sourcing</title>
     
-    <!-- FontAwesome for Icons -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://z-cdn-media.chatglm.cn/files/51c84be5-a8fb-4ed3-a2e6-99281d1bc7e0.png?auth_key=1879655878-24dff210e04d4095b32540356bedb4a2-0-2a61a136b10ef15a2b4cbe0ccdb61f27">
+
+    <!-- Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
-
-    <!-- CSS for the Admin/Settings Modal -->
-    <style>
-        .admin-btn {
-            background: none;
-            border: none;
-            color: var(--color-secondary);
-            font-size: 1.2rem;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .admin-btn:hover {
-            color: var(--color-primary);
-            transform: rotate(90deg);
-        }
-
-        /* Modal Styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(5px);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-        
-        .modal-overlay.open {
-            opacity: 1;
-            pointer-events: all;
-        }
-
-        .modal-content {
-            background: white;
-            width: 90%;
-            max-width: 600px;
-            max-height: 80vh;
-            border-radius: var(--radius-md);
-            padding: var(--spacing-xl);
-            box-shadow: var(--shadow-lg);
-            display: flex;
-            flex-direction: column;
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: var(--spacing-lg);
-            border-bottom: 1px solid var(--color-border);
-            padding-bottom: var(--spacing-md);
-        }
-
-        .request-list {
-            overflow-y: auto;
-            flex-grow: 1;
-            padding-right: 10px;
-        }
-
-        .request-item {
-            background: var(--color-light);
-            border: 1px solid var(--color-border);
-            padding: var(--spacing-md);
-            border-radius: 8px;
-            margin-bottom: var(--spacing-sm);
-        }
-
-        .request-item h5 {
-            color: var(--color-primary);
-            margin-bottom: 4px;
-            font-size: 1rem;
-        }
-
-        .request-item p {
-            margin: 0;
-            font-size: 0.9rem;
-            color: var(--color-secondary);
-        }
-
-        .request-date {
-            font-size: 0.75rem;
-            color: #94a3b8;
-            margin-top: 5px;
-            display: block;
-        }
-
-        .close-modal {
-            background: transparent;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--color-secondary);
-        }
-
-        .empty-state {
-            text-align: center;
-            color: var(--color-secondary);
-            padding: var(--spacing-xl);
-        }
-    </style>
 </head>
 <body>
-    <!-- Header / Navigation -->
+    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="header-content">
-                <div class="logo">
-                    <div class="logo-badge">LM</div>
-                    <h1>LocalMatter</h1>
-                    <p class="tagline">Merch & Supplier Sourcing</p>
-                </div>
+                <a href="#" class="logo">
+                    <!-- Image Logo -->
+                    <img src="https://z-cdn-media.chatglm.cn/files/51c84be5-a8fb-4ed3-a2e6-99281d1bc7e0.png?auth_key=1879655878-24dff210e04d4095b32540356bedb4a2-0-2a61a136b10ef15a2b4cbe0ccdb61f27" alt="Local Matter Logo" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Local Matter</h1>
+                        <p class="tagline">Merch & Supplier Sourcing</p>
+                    </div>
+                </a>
                 <nav class="nav">
                     <a href="#services" class="nav-link">Services</a>
                     <a href="#process" class="nav-link">How It Works</a>
                     <a href="#contact" class="nav-link">Contact</a>
-                    <!-- ADMIN SETTINGS BUTTON -->
                     <button id="adminBtn" class="admin-btn" title="Admin Settings">
                         <i class="fa-solid fa-gear"></i>
                     </button>
@@ -144,10 +45,9 @@
             <div class="hero-content">
                 <h2>Finding suppliers shouldn't take forever.</h2>
                 <p>We help Spartanburg businesses source custom merch, find reliable suppliers, and build brand packages. Fast. Local. No nonsense.</p>
-                <a href="#contact" class="cta-button">Get in Touch</a>
+                <a href="#contact" class="cta-button">Get in Touch <i class="fa-solid fa-arrow-right"></i></a>
             </div>
             <div class="hero-visual">
-                <div class="hero-gradient"></div>
                 <div class="floating-card card-1"><i class="fa-solid fa-shirt"></i> Merch</div>
                 <div class="floating-card card-2"><i class="fa-solid fa-magnifying-glass"></i> Sourcing</div>
                 <div class="floating-card card-3"><i class="fa-solid fa-map-pin"></i> Local</div>
@@ -158,25 +58,27 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h3>What We Do</h3>
-            <p class="section-subtitle">Complete solutions for your brand</p>
+            <div class="section-header reveal">
+                <h3>What We Do</h3>
+                <p class="section-subtitle">Complete solutions for your brand</p>
+            </div>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
                     <h4>Custom Merch Sourcing</h4>
                     <p>Logo tees, hats, drinkware, and more. We handle the sourcing so you don't have to juggle ten vendors.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="fa-solid fa-handshake"></i></div>
                     <h4>Supplier Finding</h4>
                     <p>Need a local printer? Manufacturer? We connect you with vetted suppliers who actually show up.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="fa-solid fa-box-open"></i></div>
                     <h4>Brand Kits</h4>
                     <p>Complete packages for your business. Merch, packaging, branded materials—everything in one place.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card reveal">
                     <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
                     <h4>Quote & Order Management</h4>
                     <p>Get quotes from multiple suppliers, compare options, and place orders without the back-and-forth.</p>
@@ -188,20 +90,22 @@
     <!-- How It Works -->
     <section id="process" class="process">
         <div class="container">
-            <h3>How It Works</h3>
-            <p class="section-subtitle">Simple. Transparent. Results.</p>
+            <div class="section-header reveal">
+                <h3>How It Works</h3>
+                <p class="section-subtitle">Simple. Transparent. Results.</p>
+            </div>
             <div class="process-steps">
-                <div class="step">
+                <div class="step reveal">
                     <div class="step-number">1</div>
                     <h4>You Tell Us What You Need</h4>
                     <p>Custom tees? Branded giveaways? A full brand package? Just let us know.</p>
                 </div>
-                <div class="step">
+                <div class="step reveal">
                     <div class="step-number">2</div>
                     <h4>We Find the Right Options</h4>
                     <p>We source suppliers, compare quality and pricing, and get you options that actually work.</p>
                 </div>
-                <div class="step">
+                <div class="step reveal">
                     <div class="step-number">3</div>
                     <h4>You Approve & Order</h4>
                     <p>Review the quotes, pick what works, and we handle the rest. Simple as that.</p>
@@ -210,23 +114,25 @@
         </div>
     </section>
 
-    <!-- Social Proof / Examples -->
+    <!-- Social Proof -->
     <section class="proof">
         <div class="container">
-            <h3>Who We Work With</h3>
-            <p class="section-subtitle">Trusted by local Spartanburg businesses</p>
+            <div class="section-header reveal">
+                <h3>Who We Work With</h3>
+                <p class="section-subtitle">Trusted by local Spartanburg businesses</p>
+            </div>
             <div class="proof-grid">
-                <div class="proof-item">
+                <div class="proof-item reveal">
                     <p class="proof-stat">Sourced Merch For</p>
                     <p class="proof-number">25+</p>
                     <p class="proof-label">Local Businesses</p>
                 </div>
-                <div class="proof-item">
+                <div class="proof-item reveal">
                     <p class="proof-stat">Average Setup Time</p>
                     <p class="proof-number">5-7</p>
                     <p class="proof-label">Days</p>
                 </div>
-                <div class="proof-item">
+                <div class="proof-item reveal">
                     <p class="proof-stat">Local Partnerships</p>
                     <p class="proof-number">15+</p>
                     <p class="proof-label">Vetted Suppliers</p>
@@ -235,13 +141,23 @@
         </div>
     </section>
 
-    <!-- Contact / Get In Touch -->
+    <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
             <div class="contact-wrapper">
-                <div class="contact-text">
+                <div class="contact-text reveal">
                     <h3>Let's Work Together</h3>
                     <p>Have a project in mind? Not sure where to start? Send us a message. We'll get back to you within 24 hours.</p>
+                    
+                    <!-- Ryker Highlight Box -->
+                    <div class="highlight-box">
+                        <div class="highlight-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div>
+                            <h4>Direct Line to Ryker</h4>
+                            <p>Hi, I'm Ryker. I handle quality control personally. Use the form to reach me directly.</p>
+                        </div>
+                    </div>
+
                     <div class="contact-benefits">
                         <div class="benefit-item">
                             <span class="benefit-icon"><i class="fa-solid fa-check"></i></span>
@@ -251,13 +167,10 @@
                             <span class="benefit-icon"><i class="fa-solid fa-check"></i></span>
                             <span>24-Hour Response</span>
                         </div>
-                        <div class="benefit-item">
-                            <span class="benefit-icon"><i class="fa-solid fa-check"></i></span>
-                            <span>Local Expert</span>
-                        </div>
                     </div>
                 </div>
-                <div class="contact-form-wrapper">
+                
+                <div class="contact-form-wrapper reveal">
                     <form id="contactForm" class="contact-form">
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -283,7 +196,7 @@
         </div>
     </section>
 
-    <!-- ADMIN MODAL (Hidden by default) -->
+    <!-- Admin Modal -->
     <div id="adminModal" class="modal-overlay">
         <div class="modal-content">
             <div class="modal-header">
@@ -306,7 +219,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h4>LocalMatter</h4>
+                    <h4>Local Matter</h4>
                     <p>Merch & Supplier Sourcing<br>Spartanburg, SC</p>
                 </div>
                 <div class="footer-section">
@@ -326,7 +239,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 LocalMatter. Local business sourcing, Spartanburg.</p>
+                <p>&copy; 2026 Local Matter. Local business sourcing, Spartanburg.</p>
             </div>
         </div>
     </footer>
@@ -334,126 +247,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-```
-
-### 2. Update `script.js`
-You need to replace the contents of your `script.js` with this code to handle the form saving and opening the admin panel.
-
-```javascript
-document.addEventListener('DOMContentLoaded', () => {
-    
-    // --- 1. Handle Contact Form Submission ---
-    const contactForm = document.getElementById('contactForm');
-    const formMessage = document.getElementById('formMessage');
-
-    contactForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-
-        // Gather Data
-        const formData = {
-            id: Date.now(), // Unique ID based on timestamp
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            business: document.getElementById('business').value,
-            message: document.getElementById('message').value,
-            date: new Date().toLocaleString()
-        };
-
-        // Save to LocalStorage (Simulating a database)
-        saveRequest(formData);
-
-        // Show Success Message
-        formMessage.textContent = "Message sent! We'll be in touch shortly.";
-        formMessage.className = "form-message show success";
-        
-        // Clear Form
-        contactForm.reset();
-
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            formMessage.className = "form-message";
-        }, 5000);
-    });
-
-    // --- 2. Admin / Settings Modal Logic ---
-    const adminBtn = document.getElementById('adminBtn');
-    const adminModal = document.getElementById('adminModal');
-    const closeModal = document.getElementById('closeModal');
-    const requestsList = document.getElementById('requestsList');
-
-    // Open Modal
-    adminBtn.addEventListener('click', () => {
-        loadRequests(); // Load the latest data when opening
-        adminModal.classList.add('open');
-    });
-
-    // Close Modal
-    closeModal.addEventListener('click', () => {
-        adminModal.classList.remove('open');
-    });
-
-    // Close if clicking outside content
-    adminModal.addEventListener('click', (e) => {
-        if (e.target === adminModal) {
-            adminModal.classList.remove('open');
-        }
-    });
-
-    // --- Helper Functions ---
-
-    function saveRequest(data) {
-        // Get existing requests or create empty array
-        let requests = JSON.parse(localStorage.getItem('localMatter_requests')) || [];
-        
-        // Add new request to the beginning of the array
-        requests.unshift(data);
-        
-        // Save back to local storage
-        localStorage.setItem('localMatter_requests', JSON.stringify(requests));
-    }
-
-    function loadRequests() {
-        const requests = JSON.parse(localStorage.getItem('localMatter_requests')) || [];
-        requestsList.innerHTML = '';
-
-        if (requests.length === 0) {
-            requestsList.innerHTML = '<div class="empty-state">No requests found yet. Fill out the form to test it!</div>';
-            return;
-        }
-
-        // Loop through requests and create HTML cards
-        requests.forEach(req => {
-            const card = document.createElement('div');
-            card.className = 'request-item';
-            
-            // Safe HTML injection
-            card.innerHTML = `
-                <h5>${escapeHtml(req.name)} ${req.business ? `(${escapeHtml(req.business)})` : ''}</h5>
-                <p><strong>Email:</strong> <a href="mailto:${escapeHtml(req.email)}">${escapeHtml(req.email)}</a></p>
-                <p style="margin-top:5px;"><em>"${escapeHtml(req.message)}"</em></p>
-                <span class="request-date">${req.date}</span>
-            `;
-            requestsList.appendChild(card);
-        });
-    }
-
-    // Simple security function to prevent XSS in the admin panel
-    function escapeHtml(text) {
-        if (!text) return text;
-        return text
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
-    }
-});
-
-// Global function for the Clear button in the HTML
-function clearRequests() {
-    if(confirm("Are you sure you want to delete all requests?")) {
-        localStorage.removeItem('localMatter_requests');
-        document.getElementById('requestsList').innerHTML = '<div class="empty-state">All data cleared.</div>';
-    }
-}
-```
