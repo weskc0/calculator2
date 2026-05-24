@@ -23,7 +23,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     // Simulate form submission (in production, send to backend)
     setTimeout(function() {
         // Show success message
-        formMessage.textContent = 'Thanks! I'll be in touch within 24 hours.';
+        formMessage.textContent = 'Thanks! We\'ll put you in contact with our head of quality, Ryker.';
         formMessage.className = 'form-message show success';
         
         // Reset form
