@@ -1,3 +1,15 @@
+Here is the updated `index.html`. I have added a **Settings (Gear Icon)** button in the top navigation.
+
+**Important Note on Functionality:**
+Because this is a static website (no backend database like SQL or Firebase), I have programmed this to use **Local Storage**.
+1.  **How it works for you:** When a user fills out the form on *your* computer, it will save to your browser's memory. You can click "Settings" to see it.
+2.  **The Catch:** If a customer fills out the form on *their* phone, **you will not see it** on your computer unless we connect a real backend.
+*For now, this serves as a perfect demonstration of the UI and how the data flow works.*
+
+### 1. Update `index.html`
+Replace your entire `index.html` with this code. I added the Settings button and the "Requests Modal" popup.
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +17,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LocalMatter | Local Merch & Supplier Sourcing — Spartanburg, SC</title>
     <meta name="description" content="Merch sourcing, supplier finding, and brand kits for Spartanburg small businesses. No fluff. Just results.">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <link rel="stylesheet" href="style.css">
+
+    <!-- CSS for the Admin/Settings Modal -->
+    <style>
+        .admin-btn {
+            background: none;
+            border: none;
+            color: var(--color-secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        .admin-btn:hover {
+            color: var(--color-primary);
+            transform: rotate(90deg);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            border-radius: var(--radius-md);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+            border-bottom: 1px solid var(--color-border);
+            padding-bottom: var(--spacing-md);
+        }
+
+        .request-list {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-right: 10px;
+        }
+
+        .request-item {
+            background: var(--color-light);
+            border: 1px solid var(--color-border);
+            padding: var(--spacing-md);
+            border-radius: 8px;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .request-item h5 {
+            color: var(--color-primary);
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+
+        .request-item p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--color-secondary);
+        }
+
+        .request-date {
+            font-size: 0.75rem;
+            color: #94a3b8;
+            margin-top: 5px;
+            display: block;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--color-secondary);
+        }
+
+        .empty-state {
+            text-align: center;
+            color: var(--color-secondary);
+            padding: var(--spacing-xl);
+        }
+    </style>
 </head>
 <body>
     <!-- Header / Navigation -->
@@ -21,6 +141,10 @@
                     <a href="#services" class="nav-link">Services</a>
                     <a href="#process" class="nav-link">How It Works</a>
                     <a href="#contact" class="nav-link">Contact</a>
+                    <!-- ADMIN SETTINGS BUTTON -->
+                    <button id="adminBtn" class="admin-btn" title="Admin Settings">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
                 </nav>
             </div>
         </div>
@@ -36,9 +160,9 @@
             </div>
             <div class="hero-visual">
                 <div class="hero-gradient"></div>
-                <div class="floating-card card-1">Merch</div>
-                <div class="floating-card card-2">Sourcing</div>
-                <div class="floating-card card-3">Local</div>
+                <div class="floating-card card-1"><i class="fa-solid fa-shirt"></i> Merch</div>
+                <div class="floating-card card-2"><i class="fa-solid fa-magnifying-glass"></i> Sourcing</div>
+                <div class="floating-card card-3"><i class="fa-solid fa-map-pin"></i> Local</div>
             </div>
         </div>
     </section>
@@ -50,22 +174,22 @@
             <p class="section-subtitle">Complete solutions for your brand</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🎨</div>
+                    <div class="service-icon"><i class="fa-solid fa-palette"></i></div>
                     <h4>Custom Merch Sourcing</h4>
                     <p>Logo tees, hats, drinkware, and more. We handle the sourcing so you don't have to juggle ten vendors.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🤝</div>
+                    <div class="service-icon"><i class="fa-solid fa-handshake"></i></div>
                     <h4>Supplier Finding</h4>
                     <p>Need a local printer? Manufacturer? We connect you with vetted suppliers who actually show up.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">📦</div>
+                    <div class="service-icon"><i class="fa-solid fa-box-open"></i></div>
                     <h4>Brand Kits</h4>
                     <p>Complete packages for your business. Merch, packaging, branded materials—everything in one place.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">💼</div>
+                    <div class="service-icon"><i class="fa-solid fa-briefcase"></i></div>
                     <h4>Quote & Order Management</h4>
                     <p>Get quotes from multiple suppliers, compare options, and place orders without the back-and-forth.</p>
                 </div>
@@ -132,15 +256,15 @@
                     <p>Have a project in mind? Not sure where to start? Send us a message. We'll get back to you within 24 hours.</p>
                     <div class="contact-benefits">
                         <div class="benefit-item">
-                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-icon"><i class="fa-solid fa-check"></i></span>
                             <span>Free Consultation</span>
                         </div>
                         <div class="benefit-item">
-                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-icon"><i class="fa-solid fa-check"></i></span>
                             <span>24-Hour Response</span>
                         </div>
                         <div class="benefit-item">
-                            <span class="benefit-icon">✓</span>
+                            <span class="benefit-icon"><i class="fa-solid fa-check"></i></span>
                             <span>Local Expert</span>
                         </div>
                     </div>
@@ -170,6 +294,24 @@
             </div>
         </div>
     </section>
+
+    <!-- ADMIN MODAL (Hidden by default) -->
+    <div id="adminModal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Admin Dashboard</h3>
+                <button id="closeModal" class="close-modal">&times;</button>
+            </div>
+            <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 1rem;">
+                <i class="fa-solid fa-circle-info"></i> 
+                Requests are saved to your browser's Local Storage. In a live site, these would go to a database.
+            </p>
+            <div id="requestsList" class="request-list">
+                <!-- Requests will appear here -->
+            </div>
+            <button onclick="clearRequests()" style="margin-top: 1rem; padding: 10px; background: #ef4444; color: white; border: none; border-radius: 6px; cursor: pointer;">Clear All Data</button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -204,3 +346,126 @@
     <script src="script.js"></script>
 </body>
 </html>
+```
+
+### 2. Update `script.js`
+You need to replace the contents of your `script.js` with this code to handle the form saving and opening the admin panel.
+
+```javascript
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // --- 1. Handle Contact Form Submission ---
+    const contactForm = document.getElementById('contactForm');
+    const formMessage = document.getElementById('formMessage');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Gather Data
+        const formData = {
+            id: Date.now(), // Unique ID based on timestamp
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            business: document.getElementById('business').value,
+            message: document.getElementById('message').value,
+            date: new Date().toLocaleString()
+        };
+
+        // Save to LocalStorage (Simulating a database)
+        saveRequest(formData);
+
+        // Show Success Message
+        formMessage.textContent = "Message sent! We'll be in touch shortly.";
+        formMessage.className = "form-message show success";
+        
+        // Clear Form
+        contactForm.reset();
+
+        // Hide message after 5 seconds
+        setTimeout(() => {
+            formMessage.className = "form-message";
+        }, 5000);
+    });
+
+    // --- 2. Admin / Settings Modal Logic ---
+    const adminBtn = document.getElementById('adminBtn');
+    const adminModal = document.getElementById('adminModal');
+    const closeModal = document.getElementById('closeModal');
+    const requestsList = document.getElementById('requestsList');
+
+    // Open Modal
+    adminBtn.addEventListener('click', () => {
+        loadRequests(); // Load the latest data when opening
+        adminModal.classList.add('open');
+    });
+
+    // Close Modal
+    closeModal.addEventListener('click', () => {
+        adminModal.classList.remove('open');
+    });
+
+    // Close if clicking outside content
+    adminModal.addEventListener('click', (e) => {
+        if (e.target === adminModal) {
+            adminModal.classList.remove('open');
+        }
+    });
+
+    // --- Helper Functions ---
+
+    function saveRequest(data) {
+        // Get existing requests or create empty array
+        let requests = JSON.parse(localStorage.getItem('localMatter_requests')) || [];
+        
+        // Add new request to the beginning of the array
+        requests.unshift(data);
+        
+        // Save back to local storage
+        localStorage.setItem('localMatter_requests', JSON.stringify(requests));
+    }
+
+    function loadRequests() {
+        const requests = JSON.parse(localStorage.getItem('localMatter_requests')) || [];
+        requestsList.innerHTML = '';
+
+        if (requests.length === 0) {
+            requestsList.innerHTML = '<div class="empty-state">No requests found yet. Fill out the form to test it!</div>';
+            return;
+        }
+
+        // Loop through requests and create HTML cards
+        requests.forEach(req => {
+            const card = document.createElement('div');
+            card.className = 'request-item';
+            
+            // Safe HTML injection
+            card.innerHTML = `
+                <h5>${escapeHtml(req.name)} ${req.business ? `(${escapeHtml(req.business)})` : ''}</h5>
+                <p><strong>Email:</strong> <a href="mailto:${escapeHtml(req.email)}">${escapeHtml(req.email)}</a></p>
+                <p style="margin-top:5px;"><em>"${escapeHtml(req.message)}"</em></p>
+                <span class="request-date">${req.date}</span>
+            `;
+            requestsList.appendChild(card);
+        });
+    }
+
+    // Simple security function to prevent XSS in the admin panel
+    function escapeHtml(text) {
+        if (!text) return text;
+        return text
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+});
+
+// Global function for the Clear button in the HTML
+function clearRequests() {
+    if(confirm("Are you sure you want to delete all requests?")) {
+        localStorage.removeItem('localMatter_requests');
+        document.getElementById('requestsList').innerHTML = '<div class="empty-state">All data cleared.</div>';
+    }
+}
+```
