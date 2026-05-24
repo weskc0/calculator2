@@ -79,3 +79,32 @@ document.querySelectorAll('.service-card, .step, .proof-item').forEach(el => {
     el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
     observer.observe(el);
 });
+
+// Add hover animation to buttons
+document.querySelectorAll('.cta-button, .submit-button').forEach(button => {
+    button.addEventListener('mouseenter', function() {
+        this.style.transform = 'translateY(-3px)';
+    });
+    button.addEventListener('mouseleave', function() {
+        this.style.transform = 'translateY(0)';
+    });
+});
+
+// Scroll indicator on header
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('.header');
+    if (window.scrollY > 10) {
+        header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+    } else {
+        header.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.05)';
+    }
+});
+
+// Parallax effect for hero section
+window.addEventListener('scroll', function() {
+    const heroVisual = document.querySelector('.hero-visual');
+    if (heroVisual) {
+        const scrollPosition = window.scrollY;
+        heroVisual.style.transform = `translateY(${scrollPosition * 0.3}px)`;
+    }
+});
