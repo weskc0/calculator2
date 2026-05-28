@@ -1,0 +1,9 @@
+name = "calculator2-worker"
+compatibility_date = "2026-05-24"
+
+[vars]
+# Set GITHUB_TOKEN in the Cloudflare Workers environment dashboard. Do NOT commit the token.
+
+[[routes]]
+pattern = "calculator2.weskc0.workers.dev/*"
+script = "src/worker.js"
